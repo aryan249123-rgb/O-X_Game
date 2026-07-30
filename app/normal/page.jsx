@@ -54,12 +54,12 @@ export default function Normal() {
   };
 
   return (
-    <div className="bg-purple-200 min-h-screen w-full flex justify-center items-center">
-      <div className="grid grid-cols-3 w-96 h-96 bg-amber-300">
+    <div className="bg-purple-200 h-[calc(100vh-3.5rem)] sm:h-[calc(100vh-4rem)] w-full flex justify-center items-center p-4 sm:p-6 md:p-8">
+      <div className="grid grid-cols-3 grid-rows-3 w-[min(92vw,calc(100vh-3.5rem-3rem))] h-[min(92vw,calc(100vh-3.5rem-3rem))] sm:w-[min(85vw,calc(100vh-4rem-4rem))] sm:h-[min(85vw,calc(100vh-4rem-4rem))] bg-black gap-[1px] p-[1px] rounded-2xl shadow-2xl overflow-hidden border border-black">
         {block.map((value, index) => {
           return (
             <div
-              className="w-32 h-32 bg-white border-2 border-black flex justify-center items-center text-3xl text-black cursor-pointer"
+              className="w-full h-full aspect-square bg-white flex justify-center items-center text-4xl sm:text-5xl md:text-6xl font-black text-black cursor-pointer select-none focus:outline-none active:bg-slate-100 transition-colors"
               key={index}
               onClick={() => handleClick(index)}
             >

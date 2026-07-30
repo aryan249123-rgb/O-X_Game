@@ -78,23 +78,24 @@ export default function Extreme() {
   };
 
   return (
-    <div className="flex justify-center items-center w-full h-screen bg-amber-100">
-      <div className="w-[720px] h-[720px] bg-white grid grid-cols-3 gap-1">
+    <div className="w-full h-[calc(100vh-3.5rem)] sm:h-[calc(100vh-4rem)] flex justify-center items-center bg-amber-100 p-3 sm:p-5 md:p-7">
+      <div className="w-[min(92vw,calc(100vh-3.5rem-3rem))] sm:w-[min(85vw,calc(100vh-4rem-4rem))] aspect-square bg-slate-900 grid grid-cols-3 grid-rows-3 gap-1 sm:gap-2 p-1 sm:p-2 rounded-2xl shadow-2xl border border-slate-950">
         {board.map((smallBoard, outIndex) => {
           const isActive = activeBoard === null || activeBoard === outIndex; // allow first move anywhere
           return (
             <div
               key={outIndex}
-              className={`grid grid-cols-3 border-2 border-black relative`}
+              className={`grid grid-cols-3 grid-rows-3 aspect-square w-full h-full border border-black/25 rounded-lg relative overflow-hidden transition-all duration-200 ${
+                isActive ? "opacity-100 z-10 shadow-lg scale-[1.02]" : "opacity-40 pointer-events-none"
+              }`}
               style={{
                 backgroundColor: colors[outIndex],
-                boxShadow: isActive ? "0 0 0 4px black inset" : "none",
               }}
             >
               {smallBoard.map((value, inIndex) => (
                 <div
                   key={inIndex}
-                  className="border-2 border-black w-20 h-20 flex items-center justify-center text-2xl font-bold cursor-pointer"
+                  className="w-full h-full aspect-square border border-black/15 flex items-center justify-center text-sm sm:text-base md:text-lg lg:text-2xl font-black cursor-pointer select-none focus:outline-none active:bg-black/5 transition-colors"
                   style={{ color: value === "X" ? "red" : value === "O" ? "blue" : "black" }}
                   onClick={() => handleClick(outIndex, inIndex)}
                 >
